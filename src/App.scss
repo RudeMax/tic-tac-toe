@@ -1,0 +1,156 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #8099cc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.board {
+  width: 320px;
+  height: 310px;
+
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+}
+
+.block {
+  color: white;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(78, 78, 78);
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #012880;
+  background-image: linear-gradient(-180deg, #ff89d6 0%, #c01f9e 100%);
+  box-shadow: 0 2px 3px 0 rgba(22, 75, 195, 0.5),
+    0 -1px 10px rgba(110, 15, 155, 1) inset,
+    0 15px 0.5rem rgba(255, 255, 255, 0.4) inset,
+    0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+}
+
+.logotype {
+  font-family: "Pushster", cursive;
+  font-size: 80px;
+}
+
+.tic {
+  font-size: 80px;
+}
+
+.tac {
+  font-size: 50px;
+}
+
+.resetBtn {
+  margin-top: 20px;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 200;
+  color: white;
+  border: 1px solid #012880;
+  background-image: linear-gradient(-180deg, #ff89d6 0%, #c01f9e 100%);
+  box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.5),
+    0 -0.25rem 1.5rem rgba(110, 15, 155, 1) inset,
+    0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset,
+    0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+}
+
+.resetBtn span {
+  color: transparent;
+  background-image: linear-gradient(0deg, #ee82da 0%, #fefafd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+}
+
+.resetBtn::before {
+  content: "";
+  display: block;
+  height: 0.25rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 7.5rem);
+  background: #fff;
+  border-radius: 100%;
+
+  opacity: 0.7;
+  background-image: linear-gradient(
+    -270deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 20%,
+    #ffffff 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.resetBtn::after {
+  content: "";
+  display: block;
+  height: 0.25rem;
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 7.5rem);
+  background: #fff;
+  border-radius: 100%;
+
+  filter: blur(1px);
+  opacity: 0.05;
+  background-image: linear-gradient(
+    -270deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 20%,
+    #ffffff 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.players {
+  font-family: "Pushster", cursive;
+}
+
+.finale {
+  font-family: "Pushster", cursive;
+  font-size: 50px;
+  color: rgb(214, 168, 41);
+}
+
+.winBlock {
+  background: rgb(214, 168, 41);
+}

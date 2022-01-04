@@ -5,6 +5,8 @@ import {
   REFRESH_BOARD,
   PLAYER_ONE_WIN,
   PLAYER_TWO_WIN,
+  TOGGLE_AI,
+  START_GAME,
 } from "./Types";
 
 export const playerOneWin = (combo) => {
@@ -46,3 +48,15 @@ export const refreshBoard = () => {
     type: REFRESH_BOARD,
   };
 };
+
+export const toggleAI = () => {
+  return{
+    type: TOGGLE_AI,
+  };
+}
+
+export const startGame = () => {
+  return{
+    type: START_GAME,
+  }
+}

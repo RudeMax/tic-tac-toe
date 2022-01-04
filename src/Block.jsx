@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  playerOneWin,
-  playerTwoWin,
   setPlayerOneResult,
   setPlayerTwoResult,
+  startGame,
   switchPlayer,
 } from "./Actions";
 
-const winCombos = [
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
 
-const checker = (arr, target) => target.every((v) => arr.includes(v));
+
+
 
 function Block({ id }) {
   const dispatch = useDispatch();
@@ -31,25 +21,23 @@ function Block({ id }) {
   const winCombo = useSelector((state) => state.game.winCombo);
   const [winBlock, setWinBlock] = useState(false);
 
+  const gameWithAI = useSelector((state) => state.game.gameWithAI)
+
   useEffect(() => {
     isRefreshed && setIcon("");
   }, [isRefreshed]);
 
   useEffect(() => {
-    winCombos.forEach((combo) => {
-      if (checker(playerOneResult, combo)) {
-        dispatch(playerOneWin(combo));
-      }
-    });
-  }, [playerOneResult.length]);
 
-  useEffect(() => {
-    winCombos.forEach((combo) => {
-      if (checker(playerTwoResult, combo)) {
-        dispatch(playerTwoWin(combo));
-      }
-    });
-  }, [playerTwoResult.length]);
+    // console.log('id >>> ', id+'' );
+    
+    if( playerOneResult.includes(  id+'' ) ){
+      setIcon(<div className="tic">&#215;</div>);
+    }
+    if( playerTwoResult.includes(  id+'' ) ){
+      setIcon(<div className="tac">⚪</div>);
+    }
+  }, [playerOneResult, playerTwoResult])
 
   useEffect(() => {
     if (winCombo?.includes(id)) {
@@ -60,14 +48,21 @@ function Block({ id }) {
   }, [winCombo]);
 
   const handleClick = () => {
+    if(isRefreshed) {
+      dispatch(startGame())
+    }
+    
     if (playerOne) {
       setIcon(<div className="tic">&#215;</div>);
-      dispatch(setPlayerOneResult(id));
+      dispatch(setPlayerOneResult(id+''));
     } else {
       setIcon(<div className="tac">⚪</div>);
-      dispatch(setPlayerTwoResult(id));
+      dispatch(setPlayerTwoResult(id+''));
     }
-    dispatch(switchPlayer());
+
+    if(!gameWithAI){
+      dispatch(switchPlayer());
+    }
   };
 
   const buttonStyle = () => {

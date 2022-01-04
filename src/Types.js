@@ -4,3 +4,5 @@ export const SET_PLAYERTWO_RESULT = "SET_PLAYERTWO_RESULT";
 export const REFRESH_BOARD = "REFRESH_BOARD";
 export const PLAYER_ONE_WIN = "PLAYER_ONE_WIN";
 export const PLAYER_TWO_WIN = "PLAYER_TWO_WIN";
+export const TOGGLE_AI = "TOGGLE_AI";
+export const START_GAME = "START_GAME";

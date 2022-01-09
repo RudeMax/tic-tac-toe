@@ -1,4 +1,5 @@
 import { playerOneWin } from "./Actions";
+
 import {
   SWITCH_PLAYER,
   SET_PLAYERTWO_RESULT,
@@ -6,7 +7,10 @@ import {
   REFRESH_BOARD,
   PLAYER_ONE_WIN,
   PLAYER_TWO_WIN,
+  TOGGLE_AI,
+  START_GAME,
 } from "./Types";
+
 const initState = {
   playerOne: true,
   playerOneResult: [],
@@ -15,6 +19,7 @@ const initState = {
   playerOneWin: false,
   playerTwoWin: false,
   winCombo: null,
+  gameWithAI: false,
 };
 
 const gameReducer = (state = initState, action) => {
@@ -47,6 +52,7 @@ const gameReducer = (state = initState, action) => {
         playerTwoResult: [],
         playerOneWin: false,
         playerTwoWin: false,
+        gameWithAI:false,
         winCombo: null,
       };
 
@@ -63,6 +69,19 @@ const gameReducer = (state = initState, action) => {
         playerTwoWin: !state.playerTwoWin,
         winCombo: action.payload,
       };
+
+    case TOGGLE_AI:{
+      return{
+        ...state,
+        gameWithAI: !state.gameWithAI,
+      }
+    }
+    case START_GAME:{
+      return{
+        ...state,
+        refreshed: false,
+      }
+    }
     default:
       return state;
   }
